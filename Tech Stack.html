@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Tech Stack Layout</title>
+  <style>
+    /* Global box-sizing rule */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 20px;
+      line-height: 1.6;
+    }
+
+    /* Each layer row: two-column Flex layout */
+    .layer-row {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .layer-name {
+      flex: 0 0 200px;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 10px;
+    }
+
+    .layer-content {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+      align-items: stretch; /* Force all boxes in the row to the same height */
+    }
+    
+    /* Each group box adjusts to content width but all will have the same height */
+    .group-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      /* Allow width to adjust to content, with a minimum width */
+      flex: 0 1 auto;
+      min-width: 150px;
+      /* Use flex column to allow content stacking */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .group-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    
+    .group-box ul {
+      margin: 0;
+      padding-left: 20px;
+      flex-grow: 1;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+    }
+
+    /* Responsive: On very small screens, stack layer name on top */
+    @media (max-width: 600px) {
+      .layer-row {
+        flex-direction: column;
+      }
+      .layer-name, .layer-content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 1. Client Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Client Layer</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Mobile App</strong>
+        <ul>
+          <li>React Native Mobile App</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Navigation &amp; State</strong>
+        <ul>
+          <li>React Navigation</li>
+          <li>Redux / Context API</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>API Calls</strong>
+        <ul>
+          <li>Axios / Fetch</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Maps &amp; Geolocation</strong>
+        <ul>
+          <li>React Native Maps</li>
+          <li>React Native Geolocation</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Notifications</strong>
+        <ul>
+          <li>Firebase Cloud Messaging</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 2. API Gateway & Routing Layer -->
+  <div class="layer-row">
+    <div class="layer-name">API Gateway &amp; Routing</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Gateway</strong>
+        <ul>
+          <li>Spring Cloud Gateway</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Load Balancing</strong>
+        <ul>
+          <li>Spring Cloud Load Balancer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 3. Service Discovery & Config Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Service Discovery &amp; Config</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Discovery</strong>
+        <ul>
+          <li>Netflix Eureka / Consul</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Configuration</strong>
+        <ul>
+          <li>Spring Cloud Config Server</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 4. Core Microservices Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Core Microservices</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Security &amp; Authentication</strong>
+        <ul>
+          <li>Authentication Service: Spring Security &amp; JWT</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>User Management</strong>
+        <ul>
+          <li>User Profile Service</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Ride &amp; Driver</strong>
+        <ul>
+          <li>Ride Management Service</li>
+          <li>Driver Management Service</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Payments &amp; Notifications</strong>
+        <ul>
+          <li>Payment Service: Stripe &amp; PayPal</li>
+          <li>Notification Service</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Location &amp; Resilience</strong>
+        <ul>
+          <li>Location Service: PostGIS</li>
+          <li>Resilience4j: Fault Tolerance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 5. Messaging & Event Bus Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Messaging &amp; Event Bus</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Messaging</strong>
+        <ul>
+          <li>Apache Kafka / RabbitMQ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 6. Data Persistence & Caching Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Data Persistence &amp; Caching</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Database &amp; ORM</strong>
+        <ul>
+          <li>PostgreSQL with PostGIS</li>
+          <li>Spring Data JPA / Hibernate</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Caching</strong>
+        <ul>
+          <li>Redis Cache</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 7. Monitoring, Logging & Documentation Layer -->
+  <div class="layer-row">
+    <div class="layer-name">Monitoring, Logging &amp; Docs</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Monitoring</strong>
+        <ul>
+          <li>Prometheus</li>
+          <li>Grafana</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Logging &amp; Tracing</strong>
+        <ul>
+          <li>ELK Stack / Loki &amp; Zipkin</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>API Docs</strong>
+        <ul>
+          <li>Swagger / OpenAPI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  <!-- 8. DevOps & Infrastructure Layer -->
+  <div class="layer-row">
+    <div class="layer-name">DevOps &amp; Infrastructure</div>
+    <div class="layer-content">
+      <div class="group-box">
+        <strong>Containerization</strong>
+        <ul>
+          <li>Docker</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Orchestration</strong>
+        <ul>
+          <li>Kubernetes</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>CI-CD</strong>
+        <ul>
+          <li>GitHub Actions</li>
+          <li>Jenkins</li>
+        </ul>
+      </div>
+      <div class="group-box">
+        <strong>Secrets Mgmt</strong>
+        <ul>
+          <li>Vault / AWS Secrets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+</body>
+</html>
